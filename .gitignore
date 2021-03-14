@@ -8,6 +8,13 @@
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
 .mtj.tmp/
 
 # Package Files #
