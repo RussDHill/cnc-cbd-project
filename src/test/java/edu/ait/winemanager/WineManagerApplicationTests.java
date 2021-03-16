@@ -6,7 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import edu.ait.winemanager.repositories.WineRepository;
 import edu.ait.winemanager.dto.Wine;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
 
 @SpringBootTest
 class WineManagerApplicationTests {
@@ -26,6 +27,14 @@ class WineManagerApplicationTests {
 		wineRepository.save(wine);
 		assertNotNull(wineRepository.findById(13), "Wine not found");
 
+	}
+
+	@Test
+	void deleteTest() {
+
+		wineRepository.deleteById(13);
+		Optional<Wine> wine = wineRepository.findById(13);
+		assertFalse((wine.isPresent()), "Wine found");
 	}
 
 }
