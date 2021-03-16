@@ -8,6 +8,7 @@ import edu.ait.winemanager.dto.Wine;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Optional;
+import java.util.List;
 
 @SpringBootTest
 class WineManagerApplicationTests {
@@ -37,4 +38,10 @@ class WineManagerApplicationTests {
 		assertFalse((wine.isPresent()), "Wine found");
 	}
 
+	@Test
+	void sizeTest() {
+
+		List<Wine> wines = wineRepository.findAll();
+		assertTrue((wines.size() > 11), "Size less than 12");
+	}
 }
