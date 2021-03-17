@@ -30,17 +30,8 @@ public class WineController {
         return wineRepository.findById(id);
     }
 
-    @DeleteMapping("/wines/{id}")
-    public void deleteWine(@PathVariable Integer id) {
-        try {
-            wineRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new WineNotFoundException("Unable to delete wine with id: " + id);
-        }
-    }
-
     @PostMapping("wines/")
-    public ResponseEntity createWine(@RequestBody Wine newWine) {
+    public ResponseEntity<Wine> createWine(@RequestBody Wine newWine) {
 
         wineRepository.save(newWine);
 
@@ -52,7 +43,7 @@ public class WineController {
     }
 
     @PutMapping("wines/")
-    public ResponseEntity updateWine(@RequestBody Wine newWine) {
+    public ResponseEntity<Wine> updateWine(@RequestBody Wine newWine) {
 
         if (newWine.getId() != null) {
             wineRepository.save(newWine);
@@ -66,6 +57,15 @@ public class WineController {
                     .buildAndExpand(savedWine.getId()).toUri();
 
             return ResponseEntity.created(location).build();
+        }
+    }
+
+    @DeleteMapping("/wines/{id}")
+    public void deleteWine(@PathVariable Integer id) {
+        try {
+            wineRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new WineNotFoundException("Unable to delete wine with id: " + id);
         }
     }
 }
