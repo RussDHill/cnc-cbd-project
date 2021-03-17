@@ -73,5 +73,16 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>artifactory-releases</name>
+			<url>http://52.54.176.32:8082/artifactory/Wine-Manager-libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>artifactory-snapshots</name>
+			<url>http://52.54.176.32:8082/artifactory/Wine-Manager-libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
