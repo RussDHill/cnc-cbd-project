@@ -4,4 +4,6 @@ The objective of this assignment is to develop a small piece of functionality (a
 
 Testing Webhook!
 
-Testing SonarQube Again, again, and again
+Testing SonarQube. It's working.
+
+Testing artifactory again.
