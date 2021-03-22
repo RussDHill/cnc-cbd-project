@@ -10,17 +10,23 @@
 	</parent>
 	<groupId>edu.ait</groupId>
 	<artifactId>wine-manager</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2-RELEASE</version>
 	<name>wine-manager</name>
 	<description>Wine manager project for Spring Boot</description>
 	<packaging>war</packaging>
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>edu.ait.winemanager.WineManagerApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
