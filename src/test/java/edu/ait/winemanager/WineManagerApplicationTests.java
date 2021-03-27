@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import edu.ait.winemanager.repositories.WineRepository;
 import edu.ait.winemanager.dto.Wine;
 
+import javax.validation.ConstraintViolationException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Optional;
 import java.util.List;
@@ -44,4 +46,24 @@ class WineManagerApplicationTests {
 		List<Wine> wines = wineRepository.findAll();
 		assertTrue((wines.size() > 11), "Size less than 12");
 	}
+
+	@Test
+	void saveSizeTest() {
+
+		Wine wine = new Wine(14, "Cat",
+				2018, "Merlot",
+				"France", "Bordeaux",
+				"Lacks some acidity.",
+				"Cat.jpg");
+
+		try {
+			wineRepository.save(wine);
+			fail("Expected an ConstraintViolationException to be thrown");
+		}
+		catch(ConstraintViolationException e) {
+			Optional<Wine> findWine = wineRepository.findById(14);
+			assertFalse((findWine.isPresent()), "Wine found");
+		}
+	}
+
 }

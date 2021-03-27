@@ -1,18 +1,21 @@
 package edu.ait.winemanager.dto;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Wine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Size(min = 4, max = 50, message = "Name must be between 4 and 50 characters")
     private String name;
     private int year;
     private String grapes;
     private String country;
     private String region;
     @Lob
+    @Size(min = 30, max = 500, message = "Description must be between 30 and 500 characters")
     private String description;
     private String picture;
 

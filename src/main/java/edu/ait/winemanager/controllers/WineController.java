@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,7 @@ public class WineController {
     }
 
     @PostMapping("wines/")
-    public ResponseEntity<Wine> createWine(@RequestBody Wine newWine) {
+    public ResponseEntity<Wine> createWine(@Valid @RequestBody Wine newWine) {
 
         wineRepository.save(newWine);
 
@@ -43,7 +44,7 @@ public class WineController {
     }
 
     @PutMapping("wines/")
-    public ResponseEntity<Wine> updateWine(@RequestBody Wine newWine) {
+    public ResponseEntity<Wine> updateWine(@Valid @RequestBody Wine newWine) {
 
         if (newWine.getId() != null) {
             wineRepository.save(newWine);
